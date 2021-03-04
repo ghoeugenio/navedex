@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 import './style.css';
 
-export default function AdicionarNaver() {
+export default function EditarNaver() {
     return(
-        <div className='adicionarNaver'>
+        <div className='editarNaver'>
             <header>
                 <img src='logo.png' alt='Nave'/>
             </header>
@@ -15,7 +15,7 @@ export default function AdicionarNaver() {
                     <Link to='/home'>
                         <img src='Vector.png' alt='Vector'/>
                     </Link>
-                    <h1>Adicionar Naver</h1> 
+                    <h1>Editar Naver</h1> 
                 </ul>
                 
                 <div>

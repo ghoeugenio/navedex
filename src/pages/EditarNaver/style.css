@@ -1,4 +1,4 @@
-.adicionarNaver {
+.editarNaver {
     display: flex;
     flex: 1;
 
@@ -6,37 +6,37 @@
     flex-direction: column;
 }
 
-.adicionarNaver > header > img {
+.editarNaver > header > img {
     margin-right: 68rem;
     margin-top: 1.5rem;
 }
 
-.adicionarNaver > div {
+.editarNaver > div {
 
     width: 37.5rem;
     height: 24rem;
     margin-top: 2.3rem;
 }
 
-.adicionarNaver > div > ul{
+.editarNaver > div > ul{
     display: flex;
     align-items: center;
 }
 
-.adicionarNaver > div > ul > h1{
+.editarNaver > div > ul > h1{
     margin-left: 1.4rem;
     margin-bottom: 0.5rem;
 
     color: #212121;
 }
 
-.adicionarNaver > div > div{
+.editarNaver > div > div{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.adicionarNaver > div > div > div > p{
+.editarNaver > div > div > div > p{
     margin-top: 2rem;
     margin-bottom: 0.25rem;
     font-weight: 600;
@@ -44,7 +44,7 @@
     color: #212121;
 }
 
-.adicionarNaver > div > div > div > input{
+.editarNaver > div > div > div > input{
     width: 17.5rem;
     height: 2.5rem;
 
@@ -55,7 +55,7 @@
     border-color: #424242;
 }
 
-.adicionarNaver > div .button > button{
+.editarNaver > div .button > button{
     width: 11rem;
     height: 2.5rem;
     background-color: #212121;
