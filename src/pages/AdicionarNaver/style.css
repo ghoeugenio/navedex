@@ -6,13 +6,46 @@
     flex-direction: column;
 }
 
+.adicionarNaverr > header {
+    width: 80rem;
+    height: 5.3rem;
+}
+
 .adicionarNaver > header > img {
     margin-right: 68rem;
     margin-top: 1.5rem;
 }
 
-.adicionarNaver > div {
+.adicionarNaver > header > button {
+    position: fixed;
+    margin-top: 1.875rem;
 
+    font-weight: 600;
+    color: #000;
+
+    background-color: transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.adicionarNaver > header > button:hover {
+    text-decoration: underline; 
+    color:#000000;
+}
+
+.adicionarNaver > header > button:visited {
+    text-decoration: underline; 
+    color:#000000;
+}
+
+.adicionarNaver > header > button:active {
+    text-decoration: underline; 
+    color:#000000;
+}
+
+.adicionarNaver > div {
     width: 37.5rem;
     height: 24rem;
     margin-top: 2.3rem;
@@ -30,21 +63,21 @@
     color: #212121;
 }
 
-.adicionarNaver > div > div{
+.adicionarNaver > div > form{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.adicionarNaver > div > div > div > p{
+.adicionarNaver > div > form > div > p{
     margin-top: 2rem;
     margin-bottom: 0.25rem;
+    
     font-weight: 600;
-
     color: #212121;
 }
 
-.adicionarNaver > div > div > div > input{
+.adicionarNaver > div > form > div > input{
     width: 17.5rem;
     height: 2.5rem;
 
@@ -55,14 +88,13 @@
     border-color: #424242;
 }
 
-.adicionarNaver > div .button > button{
+.adicionarNaver > div > button{
     width: 11rem;
     height: 2.5rem;
     background-color: #212121;
 
     margin-left: 26.5rem;
     margin-top: 2rem;
-
     
     color: #fff;
     font-weight: 600;

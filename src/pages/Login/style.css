@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.loginContainer > div { 
+.loginContainer > form { 
     margin-top: 9.75rem;
     flex-direction: column;
 
@@ -17,12 +17,12 @@
     border-color: #212121;
 }
 
-.loginContainer > div > img {
+.loginContainer > form > img {
     margin-top: 2.5rem;
     margin-left: 6rem;
 }
 
-.loginContainer > div > p {
+.loginContainer > form > p {
     margin-left: 2rem;
     margin-top: 2.5rem;
     margin-bottom: 0.25rem;
@@ -31,7 +31,7 @@
     color: #212121;
 }
 
-.loginContainer > div > input {
+.loginContainer > form > input {
     margin-left: 2rem;
     border-color: #424242;
 
@@ -44,7 +44,7 @@
     
 }
 
-.loginContainer > div > div > button{
+.loginContainer > form > button{
     width: 22rem;
     height: 2.5rem;
     margin-left: 2rem;

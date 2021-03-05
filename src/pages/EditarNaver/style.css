@@ -6,13 +6,31 @@
     flex-direction: column;
 }
 
+.editarNaver > header {
+    width: 80rem;
+    height: 5.3rem;
+}
+
 .editarNaver > header > img {
     margin-right: 68rem;
     margin-top: 1.5rem;
 }
 
-.editarNaver > div {
+.editarNaver > header > button {
+    position: fixed;
+    margin-top: 1.875rem;
 
+    font-weight: 600;
+    color: #000;
+
+    background-color: transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.editarNaver > div {
     width: 37.5rem;
     height: 24rem;
     margin-top: 2.3rem;
@@ -30,21 +48,21 @@
     color: #212121;
 }
 
-.editarNaver > div > div{
+.editarNaver > div > form{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.editarNaver > div > div > div > p{
+.editarNaver > div > form > div > p{
     margin-top: 2rem;
     margin-bottom: 0.25rem;
+    
     font-weight: 600;
-
     color: #212121;
 }
 
-.editarNaver > div > div > div > input{
+.editarNaver > div > form > div > input{
     width: 17.5rem;
     height: 2.5rem;
 
@@ -55,14 +73,13 @@
     border-color: #424242;
 }
 
-.editarNaver > div .button > button{
+.editarNaver > div > button{
     width: 11rem;
     height: 2.5rem;
     background-color: #212121;
 
     margin-left: 26.5rem;
     margin-top: 2rem;
-
     
     color: #fff;
     font-weight: 600;

@@ -1,24 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import './style.css';
 
 export default function AdicionarNaver() {
+
+    const [name, setName] = useState('');
+    const [idade, setIdade] = useState('');
+    const [pqp, setPqp] = useState('');
+    const [cargo, setCargo] = useState('');
+    const [tne, setTne] = useState('');
+    const [urlfoto, setUrlfoto] = useState('');
+
     return(
         <div className='adicionarNaver'>
             <header>
-                <img src='logo.png' alt='Nave'/>
+                <img src='logo-header.png' alt='nave.rs'/>
+                <button>Sair</button>
             </header>
             
             <div>
                 <ul>
                     <Link to='/home'>
-                        <img src='Vector.png' alt='Vector'/>
+                        <img src='arrow.png' alt='arrow'/>
                     </Link>
                     <h1>Adicionar Naver</h1> 
                 </ul>
                 
-                <div>
+                <form>
                     <div>
                         <p>Nome</p>
                         <input placeholder='Nome'/>
@@ -40,15 +49,11 @@ export default function AdicionarNaver() {
                         <p>URL da foto do Naver</p>
                         <input placeholder='URL da foto do Naver'/>
                     </div>
-                </div>
+                </form>
                 
-
-                <div className='button'>
-                    <button>
-                        Salvar
-                    </button>
-                </div>
-                
+                <button>
+                    Salvar
+                </button> 
                 
             </div>
         </div>

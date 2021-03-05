@@ -10,10 +10,10 @@ export default function Routes(){
     return(
         <BrowserRouter>
             <Switch>
-                <Route path='/' exact component={Login}/>
-                <Route path='/home' exact component={Home}/>
-                <Route path='/adicionar' exact component={AdicionarNaver}/>
-                <Route path='/editar' exact component={EditarNaver}/>
+                <Route path='/users/login' component={Login}/>
+                <Route path='/navers' exact component={Home}/>
+                <Route path='/navers/create' exact component={AdicionarNaver}/>
+                <Route path='/navers/update' exact component={EditarNaver}/>
             </Switch>
         </BrowserRouter>
     );
