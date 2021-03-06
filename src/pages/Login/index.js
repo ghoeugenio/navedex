@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
 import './style.css';
+import logo from '../../assets/logo.png';
 
 export default function Login(){
 
@@ -36,7 +37,7 @@ export default function Login(){
     return(
         <div className="loginContainer">
             <form onSubmit={handleLogin}>
-                <img src='logo.png' alt='Nave'/>
+                <img src={logo} alt='nave'/>
 
                 <p>E-mail</p>
                 <input 

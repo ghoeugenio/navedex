@@ -3,6 +3,7 @@
 }
 
 .home > header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -93,4 +94,11 @@
 .home > ul > li > p:last-of-type{
     font-weight: 400;
     margin-bottom: 0.82rem;
+}
+
+.home > ul > li > div > button {
+    border: none;
+    margin-right: 1rem;
+    cursor: pointer;
+    background-color: transparent;
 }

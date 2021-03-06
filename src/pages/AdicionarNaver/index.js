@@ -1,59 +1,131 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import './style.css';
+import logoHeader from '../../assets/logo-header.png';
+import arrow from '../../assets/arrow.png';
+import api from '../../services/api';
 
 export default function AdicionarNaver() {
+    
+    const history = useHistory();
 
     const [name, setName] = useState('');
-    const [idade, setIdade] = useState('');
-    const [pqp, setPqp] = useState('');
-    const [cargo, setCargo] = useState('');
-    const [tne, setTne] = useState('');
-    const [urlfoto, setUrlfoto] = useState('');
+    const [birthdate, setBirthdate] = useState('');
+    const [project, setProject] = useState('');
+    const [job_role, setJob_role] = useState('');
+    const [admission_date, setAdmission_date] = useState('');
+    const [url, setUrl] = useState('');
+
+    function logout(){
+        localStorage.clear();
+        history.push('/users/login');
+    }
+
+    function backIndex(){
+        history.push('/navers');
+    }
+
+    async function handleCreate(e){
+        e.preventDefault();
+
+        const token = 'Bearer ' + localStorage.getItem('token');
+
+        const data = {
+            job_role,
+            admission_date,
+            birthdate,
+            project,
+            name,
+            url,
+        }
+
+        try {
+            await api.post('/navers', data, {headers: {
+                Authorization: token,
+            }});
+
+            history.push('/navers');
+
+        } catch (err){
+            alert('Falha no Cadastro');
+        }
+    }
 
     return(
         <div className='adicionarNaver'>
             <header>
-                <img src='logo-header.png' alt='nave.rs'/>
-                <button>Sair</button>
+                <img src={logoHeader} alt='nave.rs'/>
+                <button onClick={logout}>Sair</button>
             </header>
             
             <div>
-                <ul>
-                    <Link to='/home'>
-                        <img src='arrow.png' alt='arrow'/>
-                    </Link>
+                <section>
+                    <button onClick={backIndex}>
+                        <img src={arrow} alt='arrow'/>
+                    </button>
                     <h1>Adicionar Naver</h1> 
-                </ul>
+                </section>
                 
-                <form>
+                <form onSubmit={handleCreate}>
                     <div>
                         <p>Nome</p>
-                        <input placeholder='Nome'/>
+                        <input
+                            placeholder='Nome'
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                         />
 
                         <p>Idade</p>
-                        <input placeholder='Idade'/>
+                        <input
+                            placeholder='Idade'
+                            value={birthdate}
+                            onChange={e => setBirthdate(e.target.value)}
+                         />
 
                         <p>Projetos que participou</p>
-                        <input placeholder='Projetos que participou'/>
+                        <input
+                            placeholder='Projetos que participou'
+                            value={project}
+                            onChange={e => setProject(e.target.value)}
+                         />
+
                     </div>
 
                     <div>
-                        <p>Cargo</p>
-                        <input placeholder='Cargo'/>
 
-                        <p>Tempo na empresa</p>
-                        <input placeholder='Tempo na empresa'/>
+                        <p>Cargo</p>
+                        <input 
+                            placeholder='Cargo'
+                            value={job_role}
+                            onChange={e => setJob_role(e.target.value)}
+                        />
+
+                        <p>Tempo de empresa</p>
+                        <input 
+                            placeholder='Tempo de empresa'
+                            value={admission_date}
+                            onChange={e => setAdmission_date(e.target.value)}
+                        />
 
                         <p>URL da foto do Naver</p>
-                        <input placeholder='URL da foto do Naver'/>
+                        <input
+                            placeholder='URL da foto do Naver'
+                            value={url}
+                            onChange={e => setUrl(e.target.value)}
+                        />
                     </div>
+
+                    <div>
+                        {/*Organizando grid*/}
+                    </div>
+
+                    <button type='submit'>
+                        Salvar
+                    </button> 
                 </form>
                 
-                <button>
-                    Salvar
-                </button> 
+                
                 
             </div>
         </div>

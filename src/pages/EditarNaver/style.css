@@ -7,18 +7,23 @@
 }
 
 .editarNaver > header {
-    width: 80rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 5.3rem;
 }
 
-.editarNaver > header > img {
+.editarNaver > header > img{
     margin-right: 68rem;
     margin-top: 1.5rem;
+    margin-left: 2rem;
 }
 
 .editarNaver > header > button {
-    position: fixed;
     margin-top: 1.875rem;
+    padding-bottom: 2rem;
+    margin-right: 2rem;
 
     font-weight: 600;
     color: #000;
@@ -36,22 +41,33 @@
     margin-top: 2.3rem;
 }
 
-.editarNaver > div > ul{
+.editarNaver > div > section {
     display: flex;
     align-items: center;
 }
 
-.editarNaver > div > ul > h1{
+.editarNaver > div > section > button{
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.editarNaver > div > section > h1{
     margin-left: 1.4rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 
     color: #212121;
 }
 
 .editarNaver > div > form{
-    display: flex;
+    display: grid;
+    grid-template-rows: 19rem 3rem;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
-    align-items: center;
+}
+
+.editarNaver > div > form > div {
+    height: 21rem;
 }
 
 .editarNaver > div > form > div > p{
@@ -71,16 +87,22 @@
     font-size: 1.125rem;
 
     border-color: #424242;
+    border-style: solid;
+    border-width: 1px;
 }
 
-.editarNaver > div > button{
+.editarNaver > div > form > div{
+    height: 0%;
+}
+
+.editarNaver > div > form > button{
     width: 11rem;
     height: 2.5rem;
-    background-color: #212121;
 
-    margin-left: 26.5rem;
-    margin-top: 2rem;
+    margin-left: 6.5rem;
+    margin-top: 1rem;
     
+    background-color: #212121;
     color: #fff;
     font-weight: 600;
 }
