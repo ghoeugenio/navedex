@@ -5,8 +5,11 @@ import './style.css';
 import logoHeader from '../../assets/logo-header.png';
 import arrow from '../../assets/arrow.png';
 import api from '../../services/api';
+import ModalCreate from '../../components/ModalCreate';
 
 export default function AdicionarNaver() {
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
     
     const history = useHistory();
 
@@ -45,7 +48,7 @@ export default function AdicionarNaver() {
                 Authorization: token,
             }});
 
-            history.push('/navers');
+            setIsModalVisible(true);
 
         } catch (err){
             alert('Falha no Cadastro');
@@ -54,10 +57,13 @@ export default function AdicionarNaver() {
 
     return(
         <div className='adicionarNaver'>
-            <header>
+
+            <header className='header'>
                 <img src={logoHeader} alt='nave.rs'/>
                 <button onClick={logout}>Sair</button>
             </header>
+
+            {isModalVisible && <ModalCreate onClose={() => {setIsModalVisible(false)}}/>}
             
             <div>
                 <section>

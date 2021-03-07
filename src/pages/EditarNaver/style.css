@@ -8,21 +8,26 @@
 
 .editarNaver > header {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    justify-content: space-between;
     height: 5.3rem;
 }
 
 .editarNaver > header > img{
-    margin-right: 68rem;
-    margin-top: 1.5rem;
+    max-width: 100%;
     margin-left: 2rem;
+    max-width:9rem;
+    max-height:2.3rem;
+    width: auto;
+    height: auto;
 }
 
 .editarNaver > header > button {
-    margin-top: 1.875rem;
+    margin-top: 2rem;
     padding-bottom: 2rem;
+    position: fixed;
+    right: 0;
     margin-right: 2rem;
 
     font-weight: 600;

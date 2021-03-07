@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 
 import api from '../../services/api';
+import ModalDelete from '../../components/ModalDelete';
 
 import './style.css';
 import logoHeader from '../../assets/logo-header.png';
@@ -13,17 +14,17 @@ export default function Home(){
     const [index, setIndex] = useState([]);
     const history = useHistory();
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
     const token = 'Bearer ' + localStorage.getItem('token');
 
-    useEffect(() => {
-        api.get('/navers',{
-            headers: {
-                Authorization: token,
-            }
-        }).then(response => {
-            setIndex(response.data);
-        })
-    },[token]);
+    api.get('/navers',{
+        headers: {
+            Authorization: token,
+        }
+    }).then(response => {
+        setIndex(response.data);
+    })
 
     function logout(){
         localStorage.clear();
@@ -34,16 +35,14 @@ export default function Home(){
         history.push('/navers/create');
     }
 
-    function updateNaver(id){
+    function updateNaver(id){  
         localStorage.setItem('update_id', id)
         history.push('/navers/update');
     }
 
     function deleteNaver(id){
-        api.delete(`/navers/${id}`,{
-            headers: {
-                Authorization: token,
-            }});
+        localStorage.setItem('delete_id', id);
+        setIsModalVisible(!isModalVisible);
     }
 
     return (
@@ -51,13 +50,15 @@ export default function Home(){
 
             <header>
                 <img src={logoHeader} alt='nave.rs'/>
-                <button onClick={logout}>Sair</button>
+                <button className='logoutbutton' onClick={logout}>Sair</button>
             </header>
 
             <div>
                 <h1>Navers</h1>
                 <button onClick={createNaver}>Adicionar Naver</button>
             </div>
+
+            {isModalVisible && <ModalDelete onClose={() => {setIsModalVisible(false)}}/>}
 
             <ul>
                 {index.map(index => (
@@ -69,7 +70,7 @@ export default function Home(){
                             <button onClick={() => {updateNaver(index.id)}}>
                                 <img src={updateIcon} alt='update'/>
                             </button>
-                            <button onClick={() => {deleteNaver(index.id)}}>
+                            <button id='buttondel' onClick={() => {deleteNaver(index.id)}}>
                                 <img src={deleteIcon} alt='delete'/>
                             </button>
                         </div>

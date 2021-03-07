@@ -1,19 +1,16 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
 .home {
     flex: 1;
 }
 
 .home > header {
-    width: 100%;
+    max-width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     height: 5.3rem;
-}
-
-.home > header > img{
-    margin-right: 68rem;
-    margin-top: 1.5rem;
-    margin-left: 2rem;
 }
 
 .home > header > button {
@@ -29,6 +26,16 @@
     cursor:pointer;
     overflow: hidden;
     outline:none;
+}
+
+.home > header > img {
+    max-width: 100%;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    max-width:9rem;
+    max-height:2.3rem;
+    width: auto;
+    height: auto;
 }
 
 .home > div {
@@ -68,6 +75,18 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     list-style-type: none;
+}
+
+@media(max-width: 1230px) {
+    .home > ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 890px) {
+    .home > ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .home > ul > li {
