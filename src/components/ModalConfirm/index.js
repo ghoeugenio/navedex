@@ -1,16 +1,17 @@
 import React from 'react';
 import api from '../../services/api';
 
-import './style.css';
+import {Modal, Buttons} from './style';
+import {ContainerModal} from '../../styles/global';
 
-const ModalDelete = ({onClose = () => {}}) => {
+const ModalConfirm = (props) => {
 
     document.body.style.overflow = 'hidden';
 
     function close() {
         document.body.style.overflow = 'auto';
         localStorage.removeItem('delete_id');
-        onClose();  
+        props.onClose();  
     }
 
     function del() {
@@ -25,7 +26,8 @@ const ModalDelete = ({onClose = () => {}}) => {
 
             localStorage.removeItem('delete_id');
             document.body.style.overflow = 'auto';
-            onClose();
+            props.onCloseConfirm();
+            props.onClose();
 
         } catch (err){
                 alert('Erro');
@@ -33,11 +35,11 @@ const ModalDelete = ({onClose = () => {}}) => {
     }
 
     return(
-        <section className='modalDelete'>
-            <div>
+        <ContainerModal>
+            <Modal>
                 <h1>Excluir Naver</h1>
                 <p>Tem certeza que deseja excluir esse naver?</p>
-                <div>
+                <Buttons>
                     <button onClick={close}>
                         Cancelar
                     </button>
@@ -45,10 +47,10 @@ const ModalDelete = ({onClose = () => {}}) => {
                     <button onClick={del}>
                         Excluir
                     </button>
-                </div>
-            </div>
-        </section>
+                </Buttons>
+            </Modal>
+        </ContainerModal>
     );
 }
 
-export default ModalDelete;
+export default ModalConfirm;

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
-import './style.css';
+import {Container, Forms} from './styles';
 import logo from '../../assets/logo.png';
 
 export default function Login(){
@@ -35,8 +35,8 @@ export default function Login(){
     }
 
     return(
-        <div className="loginContainer">
-            <form onSubmit={handleLogin}>
+        <Container>
+            <Forms onSubmit={handleLogin}>
                 <img src={logo} alt='nave'/>
 
                 <p>E-mail</p>
@@ -45,20 +45,21 @@ export default function Login(){
                     onChange={e => setEmail(e.target.value)}
                     type='email'
                     placeholder='E-mail'
-                 />
+                />
 
                 <p>Senha</p>
                 <input
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                 placeholder='Senha'
-                 />
+                type='password'
+                placeholder='Senha'
+                />
                 
                 <button type='submit'>Entrar</button>
 
-            </form>
+            </Forms>
 
-        </div>
+        </Container>
         
     );
 }

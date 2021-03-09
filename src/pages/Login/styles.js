@@ -1,12 +1,14 @@
-.loginContainer {
+import styled from 'styled-components';
+
+export const Container = styled.div`
     display: flex;
     flex: 1;
 
     justify-content: center;
     align-items: center;
-}
+`;
 
-.loginContainer > form { 
+export const Forms = styled.form`
     margin-top: 9.75rem;
     flex-direction: column;
 
@@ -15,23 +17,22 @@
 
     border: 1px solid;
     border-color: #212121;
-}
 
-.loginContainer > form > img {
+    img {
     margin-top: 2.5rem;
     margin-left: 6rem;
-}
+    }
 
-.loginContainer > form > p {
+    p {
     margin-left: 2rem;
     margin-top: 2.5rem;
     margin-bottom: 0.25rem;
 
     font-weight: 600;
     color: #212121;
-}
+    }
 
-.loginContainer > form > input {
+    input {
     margin-left: 2rem;
     border-color: #424242;
 
@@ -41,12 +42,12 @@
     padding-left: 0.5rem;
     font-weight: 400;
     font-size: 1.125rem;
-    
-}
+    }
 
-.loginContainer > form > button{
+    button{
     width: 22rem;
     height: 2.5rem;
+    
     margin-left: 2rem;
     margin-top: 2rem;
 
@@ -54,4 +55,5 @@
     color: #ffffff;
 
     font-weight: 600;
-}
+    }
+`

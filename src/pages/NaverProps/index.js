@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
-import api from '../../services/api';
-
-import './style.css';
+import {Container, Headers, Body, Section, Forms, Columns, Buttons} from './style';
 import logoHeader from '../../assets/logo-header.png';
 import arrow from '../../assets/arrow.png';
+import api from '../../services/api';
 
-export default function EditarNaver() {
+import ModalAlert from '../../components/ModalAlert';
+
+const NaverProps = (props) => {
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const history = useHistory();
 
@@ -18,62 +21,93 @@ export default function EditarNaver() {
     const [admission_date, setAdmission_date] = useState('');
     const [url, setUrl] = useState('');
 
-    function backIndex(){
-        localStorage.removeItem('update_id');
-        history.push('/navers');
-    }
+    const propsType = (JSON.parse(props.onType));
 
+    const [title, setTitle] = useState(propsType ? 'Adicionar Naver' : 'Editar Naver');
+    
     function logout(){
         localStorage.clear();
-        history.push('/users/login');
+        history.push('/');
     }
 
-    async function handleUpdate(e){
+    function backIndex(){
+        props.onClose();
+    }
+
+    async function handleSubmit(e){
+
         e.preventDefault();
 
-        const token = 'Bearer ' + localStorage.getItem('token');
-        const updateId = localStorage.getItem('update_id');
+            const token = 'Bearer ' + localStorage.getItem('token');
 
-        const data = {
-            job_role,
-            admission_date,
-            birthdate,
-            project,
-            name,
-            url,
-        }
+            const data = {
+                job_role,
+                admission_date,
+                birthdate,
+                project,
+                name,
+                url,
+            }
 
-        try {
-            await api.put(`/navers/${updateId}`, data,
-                {headers: {
-                    Authorization: token,
-                }});
+        if(propsType){       
 
-            localStorage.removeItem('update_id');
-            history.push('/navers');
+            try {
+                await api.post('/navers', data, 
+                    {headers: {
+                        Authorization: token,
+                        }
+                    }
+                );
+                setIsModalVisible(true);
+                localStorage.setItem('array_size', localStorage.getItem('array_size') + 1);
 
-        } catch (err){
-            alert('Falha na Atualizacao');
+            } catch (err){
+                alert('Falha no Cadastro');
+            }
+        } else {
+
+            const updateId = localStorage.getItem('update_id');
+    
+            try {
+                await api.put(`/navers/${updateId}`, data,
+                    {headers: {
+                        Authorization: token,
+                        }
+                    }
+                );
+                localStorage.removeItem('update_id');
+                setIsModalVisible(true);
+    
+            } catch (err){
+                alert('Falha na Atualizacao');
+            }
         }
     }
 
     return(
-        <div className='editarNaver'>
-            <header>
+        <Container>
+
+            <Headers>
                 <img src={logoHeader} alt='nave.rs'/>
                 <button onClick={logout}>Sair</button>
-            </header>
+            </Headers>
+
+            {isModalVisible ? <ModalAlert 
+            onType = {props.onType}
+            onCloseProps = {() => {props.onClose()}}
+            onCloseModal={() => {setIsModalVisible(false)}}
+            /> : null}
             
-            <div>
-                <section>
+            <Body>
+                <Section>
                     <button onClick={backIndex}>
                         <img src={arrow} alt='arrow'/>
                     </button>
-                    <h1>Editar Naver</h1> 
-                </section>
+                    <h1>{title}</h1> 
+                </Section>
                 
-                <form onSubmit={handleUpdate}>
-                    <div>
+                <Forms onSubmit={handleSubmit}>
+                    <Columns>
                         <p>Nome</p>
                         <input
                             placeholder='Nome'
@@ -95,9 +129,9 @@ export default function EditarNaver() {
                             onChange={e => setProject(e.target.value)}
                          />
 
-                    </div>
+                    </Columns>
 
-                    <div>
+                    <Columns>
 
                         <p>Cargo</p>
                         <input 
@@ -119,20 +153,20 @@ export default function EditarNaver() {
                             value={url}
                             onChange={e => setUrl(e.target.value)}
                         />
-                    </div>
+                    </Columns>
 
                     <div>
                         {/*Organizando grid*/}
                     </div>
 
-                    <button type='submit'>
+                    <Buttons type='submit'>
                         Salvar
-                    </button> 
-                </form>
-                
-                
-                
-            </div>
-        </div>
+                    </Buttons> 
+                </Forms>
+                 
+            </Body>
+        </Container>
     );
 }
+
+export default NaverProps;
